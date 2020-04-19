@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+ 
+<h:head>
+
+</h:head>
+
+ <h:body>
+ 
+<h1>Welcome</h1>
+ 
+ <h:form>
+   
+   <p:dataTable var="car" value="#{db.cars}">
+    <p:column headerText="Tipus">
+        <h:outputText value="#{car.tipus}" />
+    </p:column>
+ 
+    <p:column headerText="Gyarto">
+        <h:outputText value="#{car.gyarto}" />
+    </p:column>
+ 
+    <p:column headerText="Id">
+        <h:outputText value="#{car.id}" />
+    </p:column>
+ 
+    <p:column headerText="AlvazId">
+        <h:outputText value="#{car.alvazid}" />
+    </p:column>
+    
+    <p:column headerText="Datum">
+        <h:outputText value="#{car.datum}" />
+    </p:column>
+ 
+    <p:column headerText="Price">
+        <h:outputText value="#{car.price}" />
+    </p:column>
+ 
+    <p:column headerText="KmPrice">
+        <h:outputText value="#{car.kmprice}" />
+    </p:column>
+    
+     <p:column headerText="Statusz">
+        <h:outputText value="#{car.statusz}" />
+    </p:column>
+</p:dataTable>
+   
+   
+	 	<h:commandButton id="cmdInsert" action="#{userBean.toReg()}" value="Add item" />
+		
+</h:form>
+
+</h:body>
+
+</html>
