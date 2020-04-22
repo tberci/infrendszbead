@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+
+ 
+<h:head>
+	<title> Register</title>
+</h:head>
+
+ <h:body>
+	 <center><h2><h:outputText value="Register User"/></h2></center>
+   		
+ <h:form>
+            <table frame="box">
+                <tr>
+                    <th>Register page</th>
+                </tr>
+                <tr>
+                    <td><h:outputText value="Enter Your Name : " /></td>
+                    <td><h:inputText id="inputName" value="#{userBean.u.nev}"
+                            required="true" requiredMessage="Name field must not be empty" />
+                    </td>
+                    <td><h:message for="inputName" style="color:red" /></td>
+                </tr>
+                <tr>
+                    <td><h:outputText value="Enter Cim :" /></td>
+                    <td><h:inputText id="inputCim" value="#{userBean.u.cim}"
+                            required="true"
+                            requiredMessage="Cim field must not be empty" /></td>
+                    <td><h:message for="inputCim" style="color:red" /></td>
+                </tr>
+                <tr>
+                    <td><h:outputText value="Enter Telefonszám :" /></td>
+                    <td><h:inputText id="inputTel" value="#{userBean.u.phonenum}"
+                            required="true"
+                            requiredMessage="Telefonszám field must not be empty" /></td>
+                    <td><h:message for="inputTel" style="color:red" /></td>
+                </tr>
+            </table>
+            
+            <td><h:commandButton value="Register" action="#{userBean.add()}" /></td>
+ </h:form>
+ 
+ </h:body>
+ 
+ 
+ 
+ </html>
