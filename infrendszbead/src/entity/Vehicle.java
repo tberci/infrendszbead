@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 public class Vehicle implements Serializable {
@@ -16,7 +18,7 @@ public class Vehicle implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
-	
+	private String rendszam;
 	private String tipus;
 	private String gyarto;
 	
@@ -25,22 +27,35 @@ public class Vehicle implements Serializable {
 	private int price;
 	private int kmprice;
 	private String statusz;
+	private int costifBroken;
+	
+	@ManyToOne()
+	@JoinColumn(name="ugyfel_id",nullable = false) 
+	private User user;
+	
 	
 	public Vehicle()	{
 		
 	}
-	public Vehicle(String tipus, String gyarto, int id, int alvazid ,Date datum , int price, int kmprice,
-			String statusz) {
-		super();
+	
+	
+	
+	public Vehicle(int id, String tipus, String gyarto, int alvazid, Date datum, int price, int kmprice, String statusz) {
+	
+		this.id = id;
 		this.tipus = tipus;
 		this.gyarto = gyarto;
-		this.id = id;
 		this.alvazid = alvazid;
 		this.datum = datum;
 		this.price = price;
 		this.kmprice = kmprice;
 		this.statusz = statusz;
+		
 	}
+
+
+
+	
 
 
 	public String getTipus() {
@@ -121,9 +136,38 @@ public class Vehicle implements Serializable {
 	public void setStatusz(String statusz) {
 		this.statusz = statusz;
 	}
-	
-	
-	
-	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
+
+	public String getRendszam() {
+		return rendszam;
+	}
+
+
+
+	public void setRendszam(String rendszam) {
+		this.rendszam = rendszam;
+	}
+
+
+
+	public int getCostifBroken() {
+		return costifBroken;
+	}
+
+
+
+	public void setCostifBroken(int costifBroken) {
+		this.costifBroken = costifBroken;
+	}
+
+
+
 	
 }

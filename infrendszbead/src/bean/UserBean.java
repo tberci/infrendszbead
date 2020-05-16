@@ -9,15 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.FacesException;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+
+import javax.inject.Named;
 
 import db.Dbconn;
 import entity.User;
 
 
-@ManagedBean
+
+@Named
 @SessionScoped
 public class UserBean implements Serializable{
 
@@ -32,11 +34,9 @@ public class UserBean implements Serializable{
         this.u = new User();
     }
 	
-	
 	public UserBean() {
 		
 	}
-
 
 	public List<User> getUsers() throws SQLException, ClassNotFoundException  {
 
@@ -46,13 +46,14 @@ public class UserBean implements Serializable{
 		
 		List<User> users = new ArrayList<User>();
 		PreparedStatement pstmt = connect
-				.prepareStatement("select * from ugyfelek");
+				.prepareStatement("select id, nev, cim, phonenum from ugyfelek");
 		ResultSet rs = pstmt.executeQuery();
 
 		while (rs.next()) {
 
 			
 			u.setId(rs.getInt("id"));
+			u.setPw(rs.getString("pw"));
 			u.setNev(rs.getString("nev"));
 			u.setCim(rs.getString("cim"));
 			u.setPhonenum(rs.getString("phonenum"));
@@ -77,11 +78,12 @@ public class UserBean implements Serializable{
 		Dbconn db = new Dbconn();
 		Connection connect = db.Connect();
 	
-	String sql = "INSERT INTO ugyfelek(nev,cim,phonenum) VALUES(?,?,?)";
+   String sql = "INSERT INTO ugyfelek(nev,pw,cim,phonenum) VALUES(?,?,?,?)";
    PreparedStatement stmt = connect.prepareStatement(sql);
    stmt.setString(1, u.getNev());
-   stmt.setString(2, u.getCim());
-   stmt.setString(3, u.getPhonenum());
+   stmt.setString(2, u.getPw());
+   stmt.setString(3, u.getCim());
+   stmt.setString(4, u.getPhonenum());
    
 
     stmt.executeUpdate();
@@ -99,6 +101,8 @@ public class UserBean implements Serializable{
     System.out.println("added to db");
 
 	}
+
+	
 
 
 	public User getU() {

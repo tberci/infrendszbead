@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+ 
+<h:head>
+
+</h:head>
+
+ <h:body style="background-color:lightblue">
+ 
+<h1 style="font-size : 36px" >Ezen az oldalon lehet járműveket kölcsönözni, új járművet nyílvántartásba venni,
+Kezesni típús, renszám szerint, a kölcsönzés után a járművet visszaadnni.</h1>
+
+<h1>Típus alapján keresés </h1>
+   <h:form>
+	<h:inputText  value="#{vehicleBean.vehicle.tipus}"></h:inputText>  
+	<h:commandButton action="#{vehicleBean.select(vehicleBean.vehicle.tipus)}" value="A keresett jarmu" /> 
+	</h:form>
+
+<p:dataTable var="car" value="#{vehicleBean.vehicles2}">
+    <p:column headerText="ID">
+        <h:outputText value="#{car.id}" />
+    </p:column>
+    <p:column headerText="Rendszám">
+        <h:outputText value="#{car.rendszam}" />
+    </p:column>
+    <p:column headerText="Tipus">
+        <h:outputText value="#{car.tipus}" />
+    </p:column>
+ 
+    <p:column headerText="Gyarto">
+        <h:outputText value="#{car.gyarto}" />
+    </p:column>
+ 
+    <p:column headerText="AlvazId">
+        <h:outputText value="#{car.alvazid}" />
+    </p:column>
+    
+    <p:column headerText="Datum">
+        <h:outputText value="#{car.datum}" />
+    </p:column>
+ 
+    <p:column headerText="Price">
+        <h:outputText value="#{car.price}" />
+    </p:column>
+ 
+    <p:column headerText="KmPrice">
+        <h:outputText value="#{car.kmprice}" />
+    </p:column>
+    
+     <p:column headerText="Statusz">
+        <h:outputText value="#{car.statusz}" />
+    </p:column>
+   
+</p:dataTable>
+
+<h1>Rendszám alapján keresés</h1>
+
+  <h:form>
+	<h:inputText  value="#{vehicleBean.vehicle.rendszam}"></h:inputText>  
+	<h:commandButton action="#{vehicleBean.listByRsz(vehicleBean.vehicle.rendszam)}" value="A keresett jarmu" /> 
+	</h:form>
+
+<p:dataTable var="car" value="#{vehicleBean.vehiclesRsz}">
+    <p:column headerText="ID">
+        <h:outputText value="#{car.id}" />
+    </p:column>
+    <p:column headerText="Rendszám">
+        <h:outputText value="#{car.rendszam}" />
+    </p:column>
+    <p:column headerText="Tipus">
+        <h:outputText value="#{car.tipus}" />
+    </p:column>
+ 
+    <p:column headerText="Gyarto">
+        <h:outputText value="#{car.gyarto}" />
+    </p:column>
+ 
+    <p:column headerText="AlvazId">
+        <h:outputText value="#{car.alvazid}" />
+    </p:column>
+    
+    <p:column headerText="Datum">
+        <h:outputText value="#{car.datum}" />
+    </p:column>
+ 
+    <p:column headerText="Price">
+        <h:outputText value="#{car.price}" />
+    </p:column>
+ 
+    <p:column headerText="KmPrice">
+        <h:outputText value="#{car.kmprice}" />
+    </p:column>
+    
+     <p:column headerText="Statusz">
+        <h:outputText value="#{car.statusz}" />
+    </p:column>
+   
+</p:dataTable>
+
+<h1>A teljes adatbázis</h1>
+   <p:dataTable var="car" value="#{vehicleBean.vehicles}">
+    <p:column headerText="ID">
+        <h:outputText value="#{car.id}" />
+    </p:column>
+    <p:column headerText="Rendszám">
+        <h:outputText value="#{car.rendszam}" />
+    </p:column>
+    
+    <p:column headerText="Tipus">
+        <h:outputText value="#{car.tipus}" />
+    </p:column>
+ 
+    <p:column headerText="Gyarto">
+        <h:outputText value="#{car.gyarto}" />
+    </p:column>
+ 
+    <p:column headerText="AlvazId">
+        <h:outputText value="#{car.alvazid}" />
+    </p:column>
+    
+    <p:column headerText="Datum">
+        <h:outputText value="#{car.datum}" />
+    </p:column>
+ 
+    <p:column headerText="Price">
+        <h:outputText value="#{car.price}" />
+    </p:column>
+ 
+    <p:column headerText="KmPrice">
+        <h:outputText value="#{car.kmprice}" />
+    </p:column>
+    
+     <p:column headerText="Statusz">
+        <h:outputText value="#{car.statusz}" />
+    </p:column>
+    <p:column headerText="Kölcsönzés">
+    <h:form>
+		<h:commandButton action = "#{vehicleBean.rent(car.id)}" value="Kölcsönzés"/>
+	</h:form>
+     </p:column>
+    <p:column headerText="Visszavétel">
+    <h:form>
+		<h:commandButton action = "#{vehicleBean.Return(car.id)}" value="Visszavétel"/>
+		 
+	</h:form>
+
+	 </p:column>
+	 <p:column headerText="Sérült">
+    <h:form>
+		<h:commandButton action = "#{vehicleBean.broken(car.id)}" value="Sérült" />
+		
+	</h:form>
+		
+     </p:column>
+</p:dataTable>
+
+<p style = "background-color:white"> A kölcsönzés végösszege : <h:outputText value="#{vehicleBean.calculatePrice(vehicleBean.vehicle.id)}" /></p>
+		 
+		  
+
+<h1>A kikölcsönzött járművek listája</h1>
+<h:form>
+		<h:commandButton action = "#{vehicleBean.RentedVehicles()}" value="Kikölcsönzött járművek"/>
+		
+	</h:form>
+
+   <p:dataTable var="car" value="#{vehicleBean.rented}">
+    <p:column headerText="ID">
+        <h:outputText value="#{car.id}" />
+    </p:column>
+     <p:column headerText="Rendszám">
+        <h:outputText value="#{car.rendszam}" />
+    </p:column>
+ 
+    <p:column headerText="Típus">
+        <h:outputText value="#{car.tipus}" />
+    </p:column>
+ 
+    <p:column headerText="Gyártó">
+        <h:outputText value="#{car.gyarto}" />
+    </p:column>
+ 
+    <p:column headerText="AlvazId">
+        <h:outputText value="#{car.alvazid}" />
+    </p:column>
+    
+    <p:column headerText="Dátum">
+        <h:outputText value="#{car.datum}" />
+    </p:column>
+ 
+    <p:column headerText="Kölcsözési díj">
+        <h:outputText value="#{car.price}" />
+    </p:column>
+ 
+    <p:column headerText="Futott kilóméter díj">
+        <h:outputText value="#{car.kmprice}" />
+    </p:column>
+    
+     <p:column headerText="Állapota">
+        <h:outputText value="#{car.statusz}" />
+    </p:column>
+
+</p:dataTable>
+
+<h1>A szabad járművek listája</h1>
+
+<h:form>
+		<h:commandButton action = "#{vehicleBean.rentableVehicles()}" value="Kölcsönözhető járművek"/>
+		
+	</h:form>
+
+   <p:dataTable var="car" value="#{vehicleBean.rentable}">
+    <p:column headerText="ID">
+        <h:outputText value="#{car.id}" />
+    </p:column>
+     <p:column headerText="Rendszám">
+        <h:outputText value="#{car.rendszam}" />
+    </p:column>
+ 
+    <p:column headerText="Típus">
+        <h:outputText value="#{car.tipus}" />
+    </p:column>
+ 
+    <p:column headerText="Gyártó">
+        <h:outputText value="#{car.gyarto}" />
+    </p:column>
+ 
+    <p:column headerText="AlvazId">
+        <h:outputText value="#{car.alvazid}" />
+    </p:column>
+    
+    <p:column headerText="Dátum">
+        <h:outputText value="#{car.datum}" />
+    </p:column>
+ 
+    <p:column headerText="Kölcsözési díj">
+        <h:outputText value="#{car.price}" />
+    </p:column>
+ 
+    <p:column headerText="Futott kilóméter díj">
+        <h:outputText value="#{car.kmprice}" />
+    </p:column>
+    
+     <p:column headerText="Állapota">
+        <h:outputText value="#{car.statusz}" />
+    </p:column>
+
+</p:dataTable>
+   
+ 
+
+
+<h:form>
+		<h:commandButton  action = "#{controller.newVehicle()}" value="Új jármű nyílvántartásba vétele"/>
+		<h:commandButton  action = "#{controller.toMain()}" value="Vissza a fő oldalra"/>
+		
+	</h:form>
+</h:body>
+
+</html>

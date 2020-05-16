@@ -1,10 +1,17 @@
 package entity;
 
+import java.util.List;
+
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+@Entity
+@Table(name = "ugyfelek")
 public class User {
 
 	@Id
@@ -19,12 +26,28 @@ public class User {
 
 	@NotNull(message="Telefonszám nem lehet üres")
 	private String phonenum;
+	
+	@NotNull()
+	private String pw;
+	
+	@OneToMany(mappedBy = "ugyfelek")
+	private List<Vehicle> vehicleList;
 
 	  public User() {
 	        
 	    }
 	
 	
+	public String getPw() {
+		return pw;
+	}
+
+
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
+
+
 	public String getNev() {
 		return nev;
 	}
@@ -64,6 +87,18 @@ public class User {
 		this.phonenum = phonenum;
 	}
 	
+	
+	
+	public List<Vehicle> getVehicleList() {
+		return vehicleList;
+	}
+
+
+	public void setVehicleList(List<Vehicle> vehicleList) {
+		this.vehicleList = vehicleList;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Ugyfel [nev=" + nev + ", cim=" + cim + ", id=" + id + ", phonenum=" + phonenum + "]";

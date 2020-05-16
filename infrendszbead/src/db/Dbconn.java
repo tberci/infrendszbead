@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import javax.faces.bean.SessionScoped;
+
+
 public class Dbconn {
 	private static Connection connect = null;
 	
@@ -11,7 +14,7 @@ public class Dbconn {
 	public Connection Connect() throws ClassNotFoundException {
 	String url = "jdbc:mysql://localhost:3306/vehicledb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 
-	String username = "";
+	String username = "root";
 	String password = "";
 
 	try {

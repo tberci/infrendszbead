@@ -11,15 +11,34 @@ xmlns:p="http://primefaces.org/ui">
 
 </h:head>
 
- <h:body>
+ <h:body style="background-color:lightblue">
  
-<h1>Welcome</h1>
+<h1>Jármű kölcsönző</h1>
 
-If you are a registered member ,you can rent vehicles, on the next page.
+
+
+
+<h:form>
+		<h3>JSF Login Logout</h3>
+		<h:outputText value="Username" />
+		<h:inputText id="username" value="#{loginBean.userName}"  required="true" requiredMessage="A felhasználónév nem lehet üres" />
+		<h:message for="username" style="color:red"></h:message>
+		<br></br><br></br>
+		
+		<h:outputText value="Password" />
+		<h:inputSecret id="password" value="#{loginBean.password}"  required="true" requiredMessage="A jelszó mező nem lehet üres" ></h:inputSecret>
+		<h:message for="password" style="color:red"></h:message>
+		<br></br><br></br>
+		
+		<h:commandButton action="#{loginBean.checkValidUser()}" value="Login"></h:commandButton>
+	</h:form>
+
 	<h:form>
 
-	<h:commandButton id="asd" action="#{controller.toMain()}" value="To main" /> 
+
 	<h:commandButton id="asd2" action="#{controller.toReg()}" value="Register" /> 
+	
+		
 </h:form>
 
  

@@ -23,9 +23,21 @@ public String toReg() {
 		
 	}
 
-public String toMain() {
+public String toRent() {
 
 	return "welcome";
+	
+}
+
+public String toMain() {
+
+	return "index";
+	
+}
+
+public String newVehicle() {
+
+	return "vehicle";
 	
 }
 	

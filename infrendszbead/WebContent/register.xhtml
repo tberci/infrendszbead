@@ -28,6 +28,13 @@ xmlns:p="http://primefaces.org/ui">
                     <td><h:message for="inputName" style="color:red" /></td>
                 </tr>
                 <tr>
+                    <td><h:outputText value="Enter Password :" /></td>
+                    <td><h:inputText id="inputPw" value="#{userBean.u.pw}"
+                            required="true"
+                            requiredMessage="Telefonszám field must not be empty" /></td>
+                    <td><h:message for="inputPw" style="color:red" /></td>
+                </tr>
+                <tr>
                     <td><h:outputText value="Enter Cim :" /></td>
                     <td><h:inputText id="inputCim" value="#{userBean.u.cim}"
                             required="true"
@@ -43,8 +50,12 @@ xmlns:p="http://primefaces.org/ui">
                 </tr>
             </table>
             
-            <td><h:commandButton value="Register" action="#{userBean.add()}" /></td>
+            <td><h:commandButton value="Regisztrálás" action="#{userBean.add()}" /></td> 
+              <br/>
+            <h:commandButton id="asd2" action="#{controller.toMain()}" value="Visza a fő oldalra" /> 
  </h:form>
+ 
+
  
  </h:body>
  

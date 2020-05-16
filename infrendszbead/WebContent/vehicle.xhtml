@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+ 
+<h:head>
+
+</h:head>
+
+ <h:body>
+ 
+<h1>Jármű felvétele</h1>
+
+
+
+<h:form>
+            <table frame="box">
+                <tr>
+                    <th></th>
+                </tr>
+               <tr>
+                    <td><h:outputText value="Jármű rendszáma : " /></td>
+                    <td><h:inputText id="rid" value="#{vehicleBean.vehicle.rendszam}"
+                            required="true" requiredMessage="rendszám nem lehet üres" />
+                    </td>
+                    <td><h:message for="rid" style="color:red" /></td>
+                </tr>
+               <tr>
+                    <td><h:outputText value="Jármű típusa : " /></td>
+                    <td><h:selectOneMenu value="#{vehicleBean.vehicle.tipus}">
+                    	<f:selectItem  itemValue="vizi"/>
+                    	<f:selectItem  itemValue="földi"/>
+                    </h:selectOneMenu >
+                    </td>
+                    
+                </tr>
+               <tr>
+                    <td><h:outputText value="Gyártó : " /></td>
+                    <td><h:inputText id="gy" value="#{vehicleBean.vehicle.gyarto}"
+                            required="true" requiredMessage="Gyártó nem lehet üres" />
+                    </td>
+                    <td><h:message for="gy" style="color:red" /></td>
+                </tr>
+                <tr>
+                    <td><h:outputText value="Alváz id : " /></td>
+                    <td><h:inputText id="aid" value="#{vehicleBean.vehicle.alvazid}"
+                            required="true" requiredMessage="Alváz id nem üres" />
+                    </td>
+                    <td><h:message for="aid" style="color:red" /></td>
+                </tr>
+                <tr>
+                    <td><h:outputText value="Beszerzés dátuma : " />
+                    
+                    </td>
+                    
+                    <td><h:inputText id="date" value="#{vehicleBean.vehicle.datum}"
+                            required="true" requiredMessage="Beszerzés dátuma nem lehet üres">
+                            <f:convertDateTime pattern="yyyy-MM-dd" />
+                        </h:inputText>
+                             
+                    </td>
+                    <td><h:message for="date" style="color:red" /></td>
+                </tr>
+                <tr>
+                    <td><h:outputText value="Kölcsönzési díj: : " /></td>
+                    <td><h:inputText id="p" value="#{vehicleBean.vehicle.price}"
+                            required="true" requiredMessage="A kölcsönzési díj nem lehet üres" />
+                    </td>
+                    <td><h:message for="p" style="color:red" /></td>
+                </tr>
+                <tr>
+                    <td><h:outputText value="Futot kilóméter : " /></td>
+                    <td><h:inputText id="km" value="#{vehicleBean.vehicle.kmprice}"
+                            required="true" requiredMessage="futott kilóméter nem lehet üres" />
+                    </td>
+                    <td><h:message for="km" style="color:red" /></td>
+                </tr>
+                <tr>
+                   <td><h:outputText value="Jármű típusa : " /></td>
+                    <td><h:selectOneMenu value="#{vehicleBean.vehicle.statusz}">
+                    	<f:selectItem  itemValue="szabad"/>
+                    	<f:selectItem  itemValue="foglalt"/>
+                    	<f:selectItem  itemValue="sérült"/>
+                    </h:selectOneMenu >
+                    </td>
+                   
+                </tr>
+            </table>
+            
+            <td><h:commandButton value="Jármű felvétele" action="#{vehicleBean.addVehicle()}" /></td> 
+            <br/>
+            <h:commandButton id="asd2" action="#{controller.toMain()}" value="Vissza a főoldalra" /> 
+ </h:form>
+
+
+ </h:body>
+</html>
